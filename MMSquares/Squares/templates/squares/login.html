@@ -1,0 +1,28 @@
+{% extends 'squares/layout.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+
+    {% load crispy_forms_tags %}
+
+    {% if message %}
+    <div class="col-lg-7 col-md-12 m-auto">
+        <div class="alert alert-danger shadow" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="col-md-6 offset-md-3">
+        <h4 class="padding">Register to join the 2021 March Madness Squares Pool!</h4>
+
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-secondary" style="margin-right: 130px;">
+        </form>
+    </div>
+
+
+{% endblock %}

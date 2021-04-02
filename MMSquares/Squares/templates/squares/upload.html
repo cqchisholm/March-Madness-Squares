@@ -1,0 +1,17 @@
+{% extends 'squares/layout.html' %}
+
+{% block title %} Upload CVS {% endblock %}
+
+{% block body %}
+
+    {% load crispy_forms_tags %}
+
+    <h2>Upload the March Madness Squares Pool Excel sheet here.</h2>
+
+    <form method='POST' enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
