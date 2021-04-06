@@ -7,8 +7,7 @@ from .models import SquaresCSV
 
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=20, required=True, widget = forms.TextInput(attrs={'autofocus': 'autofocus'}))
-    username = forms.CharField(max_length=2, required=True, help_text='Set your initials as your username.')
+    username = forms.CharField(max_length=10, required=True, help_text='This is only for the admin.', widget=forms.TextInput(attrs={'autofocus': 'autofocus'}))
 
     class Meta:
         model = User
@@ -17,7 +16,7 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    initials = forms.CharField(max_length=2, widget = forms.TextInput(attrs={'autofocus': 'autofocus'}))
+    initials = forms.CharField(max_length=10, widget = forms.TextInput(attrs={'autofocus': 'autofocus'}))
     password = forms.CharField(widget=PasswordInput())
 
 

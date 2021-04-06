@@ -3,10 +3,12 @@ from django.shortcuts import render
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.models import User
 from .forms import RegisterForm, LoginForm, UploadCSVForm
 from .models import WinningNumbers, LosingNumbers
 from .helpers import random_numbers
 import pandas as pd
+from django.contrib import messages
 
 
 
@@ -94,39 +96,38 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            # Get username and password so that we can authenticate below
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            # Authenticate and log in the user
-            user = authenticate(username=username, password=raw_password)
+            user = form.save()
+            # Login the user
             login(request, user)
+            messages.success(request, "New Admin created.")
             # Upon logging the user in redirect them to the homepage
-            return redirect('index')
-    else:
-        form = RegisterForm()
+            return redirect('homepage')
+        messages.error(request, "Unsuccessful registration. Invalid infromation.")
+    # If method == GET
     return render(request, 'squares/register.html', {
-        'form': form
+        'form': RegisterForm()
     })
 
 
 def login_user(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        username = form.cleaned_data.get('initials')
-        password = form.cleaned_data.get('password')
-        # Authenticate the user
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            # Authenticate the user
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')
+            else:
+                messages.error(request, 'Invalid username or password.')
         else:
-            return render(request, 'squares/login.html', {
-                'message': 'User does not exist. Please try again or register a new account.'
-            })
-    else:
-        return render(request, 'squares/login.html', {
-            'form': LoginForm()
-        })
+            messages.error(request, 'Invalid username or password.')
+    # If method == GET
+    return render(request, 'squares/login.html', {
+        'form': LoginForm()
+    })
 
 
 def logout_user(request):
