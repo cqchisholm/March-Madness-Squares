@@ -12,6 +12,16 @@ class SquaresCSV(models.Model):
     file = models.FileField(upload_to=name_change)
 
 
+class Players(models.Model):
+    player = models.CharField(max_length=2)
+    first_round = models.IntegerField(default=0)
+    second_round = models.IntegerField(default=0)
+    sweet_sixteen = models.IntegerField(default=0)
+    elite_eight = models.IntegerField(default=0)
+    final_four = models.IntegerField(default=0)
+    championship = models.IntegerField(default=0)
+
+
 class WinningNumbers(models.Model):
     spot1 = models.IntegerField(default=0)
     spot2 = models.IntegerField(default=1)

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .forms import LoginForm, UploadCSVForm
-from .models import WinningNumbers, LosingNumbers
+from .models import WinningNumbers, LosingNumbers, Players
 from .helpers import random_numbers
 import pandas as pd
 from django.contrib import messages
@@ -79,6 +79,15 @@ def homepage(request):
 
         # Zip both los_nums with pool initials - needs to be a tuple to output in readable format
         los_num_plus_pool = tuple(zip(los_nums, pool))
+
+        # Get total users and post scores
+        # First grab a list of all players
+        players = []
+        for row in pool:
+            for key, value in row.items():
+                if value not in players:
+                    Players.objects.update_or_create(player=value)
+
 
         return render(request, 'squares/homepage.html', {
             'los_num_plus_pool': los_num_plus_pool,
