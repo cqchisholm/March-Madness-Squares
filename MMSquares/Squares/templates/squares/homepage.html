@@ -39,17 +39,24 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>        
+            </div>
+        
+        {% if request.user.is_authenticated %}
+            <div class="col-7">
+                <h5>Click to create new random numbers for the winning and losing team.</h5>
+                <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="New Numbers" name="new_numbers">
+                    </form>
+                </div>        
+            </div>
+        {% else %}
         <div class="col-7">
-            <h5>Click to create new random numbers for the winning and losing team.</h5>
-            <div>
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="submit" value="New Numbers" name="new_numbers">
-                </form>
-            </div>        
+            <h5>Not logged in.</h5>
         </div>
 
+        {% endif %}
 
 
 

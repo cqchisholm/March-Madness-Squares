@@ -31,9 +31,7 @@
                     <a class="nav-link">{{ name }} is signed in</a>
                     <a class="nav-link active" href="{% url 'logout_user' %}">Logout</a>
                 {% else %}
-                    <a class="nav-link">Not signed in</a>
-                    <a class="nav-link active" href="{% url 'register' %}">Register</a>
-                    <a class="nav-link active" href="{% url 'login_user' %}">Sign In</a>
+                    <a class="nav-link active" href="{% url 'login_user' %}">Admin Sign In</a>
                 {% endif %}
             </div>
           </div>

@@ -4,7 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .forms import RegisterForm, LoginForm, UploadCSVForm
+from .forms import LoginForm, UploadCSVForm
 from .models import WinningNumbers, LosingNumbers
 from .helpers import random_numbers
 import pandas as pd
@@ -91,24 +91,6 @@ def homepage(request):
         })
 
 
-def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.save()
-            # Login the user
-            login(request, user)
-            messages.success(request, "New Admin created.")
-            # Upon logging the user in redirect them to the homepage
-            return redirect('homepage')
-        messages.error(request, "Unsuccessful registration. Invalid infromation.")
-    # If method == GET
-    return render(request, 'squares/register.html', {
-        'form': RegisterForm()
-    })
-
-
 def login_user(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -133,7 +115,7 @@ def login_user(request):
 def logout_user(request):
     # Logout user and return to homepage
     logout(request)
-    return render(request, 'squares/homepage.html')
+    return redirect('homepage')
 
 
 def upload(request):
