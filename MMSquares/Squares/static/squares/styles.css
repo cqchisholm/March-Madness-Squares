@@ -34,5 +34,5 @@ table {
 
 
 td:hover {
-    background-color: blue;
+    background-color: rgb(187, 189, 186) !important;
 }
