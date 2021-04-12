@@ -11,24 +11,27 @@
 
 
         <div class="row">
-            <div class="col-5">
-                <table class="table table-bordered">
+            <div class="col-5 ">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th colspan="1"></th>
-                            <th colspan="10" class="bg-success text-warning">Winning Team</th>
+                            <th colspan="12" class="text-white bg-dark">Winning Team</th>
                         </tr>
                         <tr>
-                            <th></th>
+                            <th class="bg-dark"></th>
+                            <th class="green"></th>
                             {% for number in win_nums %}
-                            <th>{{ number }}</th>
+                            <th class="green">{{ number }}</th>
                             {% endfor %}
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <th rowspan="11" class="text-white bg-dark"><span>Losing Team</span></th>
+                        </tr>
                         {% for item in los_num_plus_pool %}
                         <tr>
-                            <th>{{ item.0 }}</th>
+                            <th class="yellow">{{ item.0 }}</th>
                             <td>{{ item.1.0 }}</td>
                             <td>{{ item.1.1 }}</td>
                             <td>{{ item.1.2 }}</td>
