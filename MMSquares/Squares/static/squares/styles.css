@@ -31,7 +31,8 @@ span {
 
 /* The two below change the background color for the hovered box as well as the entire row */
 td:hover {
-    background-color: rgb(187, 189, 186) !important;
+    background-color: rgba(83, 81, 81, 0.712) !important;
+    cursor: pointer;
 }
 
 .pool-table tbody tr:hover {
