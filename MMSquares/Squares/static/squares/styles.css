@@ -1,21 +1,18 @@
-th, td {
+.pool-table th, .pool-table td {
     text-align: center;
     vertical-align: middle;
 }
-
 
 span {
     writing-mode:vertical-rl;
     transform: rotate(180deg);
 }
 
-
-table {
+.pool-table {
     margin-top: 50px;
     margin-left: 25px;
     max-width: 700px;
 }
-
 
 .green {
     background-color: green !important;
@@ -28,11 +25,15 @@ table {
 }
 
 
-table {
+.pool-table {
     border: 1px solid black !important;
 }
 
 
 td:hover {
     background-color: rgb(187, 189, 186) !important;
+}
+
+.pool-table tbody tr:hover {
+    background-color: rgba(190, 192, 189, 0.534);
 }

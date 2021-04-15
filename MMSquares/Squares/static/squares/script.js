@@ -1,30 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let cells = document.querySelectorAll('.col1');
-
+    // All rows and columns as a variable
+    cols = document.querySelectorAll('.col3');
+        
     // When hovering over
     function on() {
-        cells.forEach(cell => {
-            cell.style.backgroundColor = 'rgba(190, 192, 189, 0.534)';
+        cols.forEach(col => {
+            col.style.backgroundColor = 'rgba(190, 192, 189, 0.534)';
         })
     }
 
     // When not hovering over
     function off() {
-        cells.forEach(cell => {
-            cell.style.backgroundColor = 'white';
+        cols.forEach(col => {
+            col.style.backgroundColor = '';
         })
     }
 
-
     // For each cell in the row change the background color when hovered over
-    cells.forEach(cell => {
-        cell.addEventListener('mouseenter', on)
-        cell.addEventListener('mouseleave', off)
+    cols.forEach(col => {
+        col.addEventListener('mouseover', on)
+        col.addEventListener('mouseout', off)
     })
-
-
-
+    
 })
 
 
