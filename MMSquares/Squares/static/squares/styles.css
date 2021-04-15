@@ -38,3 +38,7 @@ td:hover {
 .pool-table tbody tr:hover {
     background-color: rgba(190, 192, 189, 0.534);
 }
+
+.bg-dark {
+    width: 20px;
+}
