@@ -27,6 +27,23 @@ document.addEventListener('DOMContentLoaded', function() {
         col.addEventListener('mouseover', on)
         col.addEventListener('mouseout', off)
     })
+
+
+    // Update the total amount won for each round per player
+    R1Worth = document.querySelector('#R1Worth').innerHTML;
+    R1Games = document.querySelector('#R1Games').innerHTML;
+    R2Worth = document.querySelector('#R2Worth').innerHTML;
+    R2Games = document.querySelector('#R2Games').innerHTML;
+    R3Worth = document.querySelector('#R3Worth').innerHTML;
+    R3Games = document.querySelector('#R3Games').innerHTML;
+    R4Worth = document.querySelector('#R4Worth').innerHTML;
+    R4Games = document.querySelector('#R4Games').innerHTML;
+    R5Worth = document.querySelector('#R5Worth').innerHTML;
+    R5Games = document.querySelector('#R5Games').innerHTML;
+    R6Worth = document.querySelector('#R6Worth').innerHTML;
+    R6Games = document.querySelector('#R6Games').innerHTML;
+
+    document.querySelector('#R1Amount').innerHTML = R1Worth * R1Games;
     
 })
 

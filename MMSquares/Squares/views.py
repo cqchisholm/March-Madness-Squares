@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .forms import LoginForm, UploadCSVForm
-from .models import WinningNumbers, LosingNumbers, Players
+from .models import RoundAmounts, WinningNumbers, LosingNumbers, Players
 from .helpers import random_numbers
 import pandas as pd
 from django.contrib import messages
@@ -100,11 +100,22 @@ def homepage(request):
             'championship'
         )
 
+        # Grab round amount details
+        round_amounts = RoundAmounts.objects.all().values_list(
+            'first_round',
+            'second_round',
+            'sweet_sixteen',
+            'elite_eight',
+            'final_four',
+            'championship'
+        )
+
         return render(request, 'squares/homepage.html', {
             'los_num_plus_pool': los_num_plus_pool,
             'win_nums': win_nums,
             'los_nums': los_nums,
-            'player_scores': player_scores
+            'player_scores': player_scores,
+            'round_amounts': round_amounts
         })
     except:
         return render(request, 'squares/homepage.html', {

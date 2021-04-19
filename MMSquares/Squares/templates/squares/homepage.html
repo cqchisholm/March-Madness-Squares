@@ -85,5 +85,36 @@
                 </table>
             </div>
         </div>
+        
+        <div class="container">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-R1-tab" data-bs-toggle="tab" data-bs-target="#nav-R1" type="button" role="tab" aria-controls="nav-R1" aria-selected="true">First Round</button>
+                  <button class="nav-link" id="nav-R2-tab" data-bs-toggle="tab" data-bs-target="#nav-R2" type="button" role="tab" aria-controls="nav-R2" aria-selected="false">Second Round</button>
+                  <button class="nav-link" id="nav-R3-tab" data-bs-toggle="tab" data-bs-target="#nav-R3" type="button" role="tab" aria-controls="nav-R3" aria-selected="false">Sweet 16</button>
+                  <button class="nav-link" id="nav-R4-tab" data-bs-toggle="tab" data-bs-target="#nav-R4" type="button" role="tab" aria-controls="nav-R4" aria-selected="false">Elite Eight</button>
+                  <button class="nav-link" id="nav-R5-tab" data-bs-toggle="tab" data-bs-target="#nav-R5" type="button" role="tab" aria-controls="nav-R5" aria-selected="false">Final Four</button>
+                  <button class="nav-link" id="nav-R6-tab" data-bs-toggle="tab" data-bs-target="#nav-R6" type="button" role="tab" aria-controls="nav-R6" aria-selected="false">Championship</button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-R1" role="tabpanel" aria-labelledby="nav-R1-tab">First Round</div>
+                <div class="tab-pane fade" id="nav-R2" role="tabpanel" aria-labelledby="nav-R2-tab">Second Round</div>
+                <div class="tab-pane fade" id="nav-R3" role="tabpanel" aria-labelledby="nav-R3-tab">Sweet 16</div>
+                <div class="tab-pane fade" id="nav-R4" role="tabpanel" aria-labelledby="nav-R4-tab">Elite Eight</div>
+                <div class="tab-pane fade" id="nav-R5" role="tabpanel" aria-labelledby="nav-R5-tab">Final Four</div>
+                <div class="tab-pane fade" id="nav-R6" role="tabpanel" aria-labelledby="nav-R6-tab">Championship</div>
+              </div>
+        </div>
+
+
+        <div>
+            <p hidden id="R1Worth">{{ round_amounts.0.0 }}</p>
+            <p hidden id="R2Worth">{{ round_amounts.0.1 }}</p>
+            <p hidden id="R3Worth">{{ round_amounts.0.2 }}</p>
+            <p hidden id="R4Worth">{{ round_amounts.0.3 }}</p>
+            <p hidden id="R5Worth">{{ round_amounts.0.4 }}</p>
+            <p hidden id="R6Worth">{{ round_amounts.0.5 }}</p>
+        </div>
 
 {% endblock %}

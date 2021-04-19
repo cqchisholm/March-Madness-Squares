@@ -22,6 +22,15 @@ class Players(models.Model):
     championship = models.IntegerField(default=0)
 
 
+class RoundAmounts(models.Model):
+    first_round = models.FloatField(default=0)
+    second_round = models.FloatField(default=0)
+    sweet_sixteen = models.FloatField(default=0)
+    elite_eight = models.FloatField(default=0)
+    final_four = models.FloatField(default=0)    
+    championship = models.FloatField(default=0)
+
+
 class WinningNumbers(models.Model):
     spot1 = models.IntegerField(default=0)
     spot2 = models.IntegerField(default=1)
