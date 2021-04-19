@@ -37,3 +37,12 @@ span {
     width: 20px;
 }
 
+.pad-left {
+    padding-top: 3%;
+    padding-left: 3%;
+}
+
+.pad-right {
+    padding-top: 3%;
+    padding-right: 3%;
+}

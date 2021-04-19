@@ -150,3 +150,7 @@ def upload(request):
         return render(request, 'squares/upload.html', {
             'form': UploadCSVForm()
         })
+
+
+def directions(request):
+    return render(request, 'squares/directions.html')
