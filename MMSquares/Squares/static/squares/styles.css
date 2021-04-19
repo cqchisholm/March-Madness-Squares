@@ -1,4 +1,4 @@
-.pool-table th, .pool-table td {
+.pool-table th, .pool-table td, .scores-table th, .scores-table td {
     text-align: center;
     vertical-align: middle;
 }
@@ -6,12 +6,6 @@
 span {
     writing-mode:vertical-rl;
     transform: rotate(180deg);
-}
-
-.pool-table {
-    margin-top: 50px;
-    margin-left: 25px;
-    max-width: 700px;
 }
 
 .green {
@@ -30,7 +24,7 @@ span {
 }
 
 /* The two below change the background color for the hovered box as well as the entire row */
-td:hover {
+.pool-table td:hover {
     background-color: rgba(83, 81, 81, 0.712) !important;
     cursor: pointer;
 }
@@ -42,3 +36,4 @@ td:hover {
 .bg-dark {
     width: 20px;
 }
+

@@ -55,14 +55,14 @@ def homepage(request):
 
 
 
-    # Winning team's numbers saved in database
+    # Winning team's numbers
     win_nums = WinningNumbers.objects.values()[0]
     # Turn dictionary into a list to better output into the HTML table
     win_nums = [value for key, value in win_nums.items()]
     # Remove the first number as it's just the ID
     win_nums = win_nums[1:]
 
-    # Losing team's numbers saved in database
+    # Losing team's numbers
     los_nums = LosingNumbers.objects.values()[0]
     # Turn dictionary into a list to better output into the HTML table
     los_nums = [value for key, value in los_nums.items()]
@@ -86,13 +86,25 @@ def homepage(request):
         for row in pool:
             for key, value in row.items():
                 if value not in players:
+                    players.append(value)
                     Players.objects.update_or_create(player=value)
 
+        # Grab player score details
+        player_scores = Players.objects.all().values_list(
+            'player',
+            'first_round',
+            'second_round',
+            'sweet_sixteen',
+            'elite_eight',
+            'final_four',
+            'championship'
+        )
 
         return render(request, 'squares/homepage.html', {
             'los_num_plus_pool': los_num_plus_pool,
             'win_nums': win_nums,
-            'los_nums': los_nums
+            'los_nums': los_nums,
+            'player_scores': player_scores
         })
     except:
         return render(request, 'squares/homepage.html', {
