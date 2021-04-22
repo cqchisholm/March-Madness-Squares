@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    console.log(player_count);
     // All rows and columns as a variable
     let cols = document.querySelectorAll('.pool-table td');
         

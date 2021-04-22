@@ -27,7 +27,8 @@
             <div class="navbar-nav">
               <a class="nav-link" href="{% url 'directions' %}" style="padding-left: 40px;">How to play</a>
               {% if user.is_authenticated %}
-                <a class="nav-link" href="#">Admin settings</a>
+                <a class="nav-link" href="{% url 'upload' %}">Upload new spreadsheet</a>
+                <a class="nav-link" href="{% url 'admin:index' %}">Admin settings</a>
               {% endif %}
             </div>
             <div class="navbar-nav mt-2 ms-auto">

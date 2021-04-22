@@ -83,7 +83,6 @@ def homepage(request):
         # Get total users and post scores
         # First grab a list of all players
         players = []
-        
         for row in pool:
             for key, value in row.items():
                 if value not in players:
