@@ -29,12 +29,36 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
 
+
     // Update the total amount won for each round per player
     // Round 1
-    let R1IDs = ['1', '2', '3', '4', '5', '6']
-    R1IDs.forEach(item =>  {
-        document.querySelector(`#R1-amount-won-${item}`).innerHTML = document.querySelector('#R1Worth').innerHTML * document.querySelector(`#R1-games-won-${item}`).innerHTML;
+    let PlayerId = ['1', '2', '3', '4', '5', '6'];
+    PlayerId.forEach(item =>  {
+        // Round 1
+        var RWorth = document.querySelector(`#R1Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R1-games-won-${item}`).innerHTML;
+        document.querySelector(`#R1-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        // Round 2
+        var RWorth = document.querySelector(`#R2Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R2-games-won-${item}`).innerHTML;
+        document.querySelector(`#R2-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        // Round 3
+        var RWorth = document.querySelector(`#R3Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R3-games-won-${item}`).innerHTML;
+        document.querySelector(`#R3-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        // Round 4
+        var RWorth = document.querySelector(`#R4Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R4-games-won-${item}`).innerHTML;
+        document.querySelector(`#R4-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        // Round 5
+        var RWorth = document.querySelector(`#R5Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R5-games-won-${item}`).innerHTML;
+        document.querySelector(`#R5-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        // Round 6
+        var RWorth = document.querySelector(`#R6Worth`).innerHTML;
+        var R_Games_Won = document.querySelector(`#R6-games-won-${item}`).innerHTML;
+        document.querySelector(`#R6-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
     })
-    
+
 })
 
