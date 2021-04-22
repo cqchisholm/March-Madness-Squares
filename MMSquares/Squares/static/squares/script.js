@@ -31,34 +31,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Update the total amount won for each round per player
-    // Round 1
-    let PlayerId = ['1', '2', '3', '4', '5', '6'];
-    PlayerId.forEach(item =>  {
+    for (i = 1; i <= player_count; i++) {
         // Round 1
         var RWorth = document.querySelector(`#R1Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R1-games-won-${item}`).innerHTML;
-        document.querySelector(`#R1-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        var R_Games_Won = document.querySelector(`#R1-games-won-${i}`).innerHTML;
+        document.querySelector(`#R1-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
         // Round 2
         var RWorth = document.querySelector(`#R2Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R2-games-won-${item}`).innerHTML;
-        document.querySelector(`#R2-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        var R_Games_Won = document.querySelector(`#R2-games-won-${i}`).innerHTML;
+        document.querySelector(`#R2-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
         // Round 3
         var RWorth = document.querySelector(`#R3Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R3-games-won-${item}`).innerHTML;
-        document.querySelector(`#R3-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        var R_Games_Won = document.querySelector(`#R3-games-won-${i}`).innerHTML;
+        document.querySelector(`#R3-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
         // Round 4
         var RWorth = document.querySelector(`#R4Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R4-games-won-${item}`).innerHTML;
-        document.querySelector(`#R4-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        var R_Games_Won = document.querySelector(`#R4-games-won-${i}`).innerHTML;
+        document.querySelector(`#R4-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
         // Round 5
         var RWorth = document.querySelector(`#R5Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R5-games-won-${item}`).innerHTML;
-        document.querySelector(`#R5-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
+        var R_Games_Won = document.querySelector(`#R5-games-won-${i}`).innerHTML;
+        document.querySelector(`#R5-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
         // Round 6
         var RWorth = document.querySelector(`#R6Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R6-games-won-${item}`).innerHTML;
-        document.querySelector(`#R6-amount-won-${item}`).innerHTML = RWorth * R_Games_Won;
-    })
+        var R_Games_Won = document.querySelector(`#R6-games-won-${i}`).innerHTML;
+        document.querySelector(`#R6-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+    }
 
 })
 

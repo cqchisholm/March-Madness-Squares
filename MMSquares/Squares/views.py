@@ -83,6 +83,7 @@ def homepage(request):
         # Get total users and post scores
         # First grab a list of all players
         players = []
+        
         for row in pool:
             for key, value in row.items():
                 if value not in players:
@@ -115,7 +116,8 @@ def homepage(request):
             'win_nums': win_nums,
             'los_nums': los_nums,
             'player_scores': player_scores,
-            'round_amounts': round_amounts
+            'round_amounts': round_amounts,
+            'player_count': len(players)
         })
     except:
         return render(request, 'squares/homepage.html', {

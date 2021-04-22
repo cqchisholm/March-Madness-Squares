@@ -49,6 +49,10 @@
     {% endblock %}
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- Initializing a variable (Number of players) for use in the Javascript file -->
+    <script type="text/javascript">
+      var player_count = "{{ player_count }}";
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="{% static 'squares/script.js' %}"></script>
 
