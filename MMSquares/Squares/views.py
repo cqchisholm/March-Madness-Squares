@@ -54,7 +54,6 @@ def homepage(request):
             item.save()
 
 
-
     # Winning team's numbers
     win_nums = WinningNumbers.objects.values()[0]
     # Turn dictionary into a list to better output into the HTML table
