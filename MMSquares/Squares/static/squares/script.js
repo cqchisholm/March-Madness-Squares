@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    console.log(player_count);
     // All rows and columns as a variable
     let cols = document.querySelectorAll('.pool-table td');
         
@@ -29,35 +28,40 @@ document.addEventListener('DOMContentLoaded', function() {
         col.addEventListener('mouseout', off)
     })
 
-
-
     // Update the total amount won for each round per player
-    for (i = 1; i <= player_count; i++) {
+    for (var i = 1; i <= player_count; i++) {
         // Round 1
-        var RWorth = document.querySelector(`#R1Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R1-games-won-${i}`).innerHTML;
-        document.querySelector(`#R1-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth1 = document.querySelector(`#R1Worth`).innerHTML;
+        var R_Games_Won1 = document.querySelector(`#R1-games-won-${i}`).innerHTML;
+        document.querySelector(`#R1-amount-won-${i}`).innerHTML = `$${RWorth1 * R_Games_Won1}`;
         // Round 2
-        var RWorth = document.querySelector(`#R2Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R2-games-won-${i}`).innerHTML;
-        document.querySelector(`#R2-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth2 = document.querySelector(`#R2Worth`).innerHTML;
+        var R_Games_Won2 = document.querySelector(`#R2-games-won-${i}`).innerHTML;
+        document.querySelector(`#R2-amount-won-${i}`).innerHTML = `$${RWorth2 * R_Games_Won2}`;
         // Round 3
-        var RWorth = document.querySelector(`#R3Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R3-games-won-${i}`).innerHTML;
-        document.querySelector(`#R3-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth3 = document.querySelector(`#R3Worth`).innerHTML;
+        var R_Games_Won3 = document.querySelector(`#R3-games-won-${i}`).innerHTML;
+        document.querySelector(`#R3-amount-won-${i}`).innerHTML = `$${RWorth3 * R_Games_Won3}`;
         // Round 4
-        var RWorth = document.querySelector(`#R4Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R4-games-won-${i}`).innerHTML;
-        document.querySelector(`#R4-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth4 = document.querySelector(`#R4Worth`).innerHTML;
+        var R_Games_Won4 = document.querySelector(`#R4-games-won-${i}`).innerHTML;
+        document.querySelector(`#R4-amount-won-${i}`).innerHTML = `$${RWorth4 * R_Games_Won4}`;
         // Round 5
-        var RWorth = document.querySelector(`#R5Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R5-games-won-${i}`).innerHTML;
-        document.querySelector(`#R5-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth5 = document.querySelector(`#R5Worth`).innerHTML;
+        var R_Games_Won5 = document.querySelector(`#R5-games-won-${i}`).innerHTML;
+        document.querySelector(`#R5-amount-won-${i}`).innerHTML = `$${RWorth5 * R_Games_Won5}`;
         // Round 6
-        var RWorth = document.querySelector(`#R6Worth`).innerHTML;
-        var R_Games_Won = document.querySelector(`#R6-games-won-${i}`).innerHTML;
-        document.querySelector(`#R6-amount-won-${i}`).innerHTML = RWorth * R_Games_Won;
+        var RWorth6 = document.querySelector(`#R6Worth`).innerHTML;
+        var R_Games_Won6 = document.querySelector(`#R6-games-won-${i}`).innerHTML;
+        document.querySelector(`#R6-amount-won-${i}`).innerHTML = `$${RWorth6 * R_Games_Won6}`;
+
+        // Calculate the total winnings for each player and show in the Tournament Total column
+        var total = document.querySelectorAll(`.total-${i}`);
+        total.forEach(item => {
+            item.innerHTML = `$${RWorth1 * R_Games_Won1 + RWorth2 * R_Games_Won2 + RWorth3 * R_Games_Won3 + RWorth4 * R_Games_Won4 + RWorth5 * R_Games_Won5 + RWorth6 * R_Games_Won6}`;
+        })
     }
 
 })
+
 
