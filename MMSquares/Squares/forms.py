@@ -12,7 +12,6 @@ class LoginForm(forms.Form):
 
 
 class UploadCSVForm(forms.ModelForm):
-
     class Meta:
         model = SquaresCSV
         fields = ['file']

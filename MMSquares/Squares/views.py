@@ -165,3 +165,7 @@ def upload(request):
 
 def directions(request):
     return render(request, 'squares/directions.html')
+
+
+def quick_settings(request):
+    return render(request, 'squares/quick_settings.html')

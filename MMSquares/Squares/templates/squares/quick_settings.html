@@ -1,0 +1,30 @@
+{% extends 'squares/layout.html' %}
+
+{% block title %} Quick Settings {% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+        {% if request.user.is_authenticated %}
+            <form method="POST">
+                {% csrf_token %}
+                <p>Click to create new random numbers for the winning and losing team:
+                    <input class="btn btn-primary" type="submit" value="New Numbers" name="new_numbers">
+                </p>
+            </form>
+            <div class="container">
+                <form method-"POST">
+                    {% csrf_token %}
+                    Reset entire game.
+                    <input class="btn btn-primary" type="submit" value="Reset Games" name="reset_game">    
+                </form>
+            </div>
+        
+        {% else %}
+            You need admin permissions to access these settings.
+        {% endif %}
+    </div>
+
+
+{% endblock %}
