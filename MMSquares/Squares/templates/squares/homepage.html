@@ -53,7 +53,7 @@
                         <form action="POST">
                             {% csrf_token %}
                             <div class="row">
-                                <div class="col-md pad-left">
+                                <div class="col-3">
                                     <b>Select Round</b>
                                     <select class="form-select" name="round">
                                         <option value="R1">First Round</option>
@@ -64,13 +64,17 @@
                                         <option value="R6">Championship</option>
                                     </select>
                                 </div>
-                                <div class="col-md pad-right">
+                                <div class="col-3">
                                     <b>Select Winner</b>
                                     <select class="form-select" name="player">
                                         {% for player in player_scores %}
                                             <option value="player-{{ forloop.counter }}">{{ player.0 }}</option>
                                         {% endfor %}
                                     </select>
+                                </div>
+                                <div class="col">
+                                    <br>
+                                    <button class="btn btn-success">Submit</button>
                                 </div>
                             </div>
                         </form>    
