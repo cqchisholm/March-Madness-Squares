@@ -50,3 +50,10 @@ span {
 .directions {
     padding-top: 20px;
 }
+
+/* overriding the CSS so that a downward arrow appears in the drop downs
+   'Select Round' and 'Select Winner' */
+.form-control {
+    -webkit-appearance: menulist !important;
+    appearance: auto !important;
+}

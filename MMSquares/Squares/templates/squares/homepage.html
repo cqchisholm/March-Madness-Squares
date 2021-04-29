@@ -5,6 +5,8 @@
 
 {% block body %}
 
+    {% load crispy_forms_tags %}
+
     {% if message %}
         {{ message }}
     {% endif %}
@@ -55,22 +57,11 @@
                             <div class="row">
                                 <div class="col-3">
                                     <b>Select Round</b>
-                                    <select class="form-select" name="round">
-                                        <option value="R1">First Round</option>
-                                        <option value="R2">Second Round</option>
-                                        <option value="R3">Sweet 16</option>
-                                        <option value="R4">Elite Eight</option>
-                                        <option value="R5">Final Four</option>
-                                        <option value="R6">Championship</option>
-                                    </select>
+                                    {{ form.round_number|as_crispy_field }}
                                 </div>
                                 <div class="col-3">
                                     <b>Select Winner</b>
-                                    <select class="form-select" name="player">
-                                        {% for player in player_scores %}
-                                            <option value="player-{{ forloop.counter }}">{{ player.0 }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    {{ form.winner|as_crispy_field }}
                                 </div>
                                 <div class="col">
                                     <br>
