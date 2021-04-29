@@ -4,7 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .forms import LoginForm, UploadCSVForm
+from .forms import LoginForm, UploadCSVForm, WinnerForm
 from .models import RoundAmounts, WinningNumbers, LosingNumbers, Players
 from .helpers import random_numbers
 import pandas as pd
@@ -115,7 +115,8 @@ def homepage(request):
             'los_nums': los_nums,
             'player_scores': player_scores,
             'round_amounts': round_amounts,
-            'player_count': len(players)
+            'player_count': len(players),
+            'form': WinnerForm(),
         })
     except:
         return render(request, 'squares/homepage.html', {
