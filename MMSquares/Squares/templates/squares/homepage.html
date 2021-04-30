@@ -12,12 +12,10 @@
     {% endif %}
 
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show w-25 mx-auto" role="alert">
-                <strong>{{ message }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
+        <div class="alert alert-success alert-dismissible fade show w-25 mx-auto" role="alert">
+            <strong>{{ messages }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endif %}
 
         <div class="row">

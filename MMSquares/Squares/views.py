@@ -81,7 +81,7 @@ def homepage(request):
         })
     except:
         return render(request, 'squares/homepage.html', {
-            'error_message': 'Something went wrong. Cannot find CSV file.'
+            'messages': 'Something went wrong. Cannot find CSV file.'
         })
 
 
@@ -98,8 +98,10 @@ def login_user(request):
                 return redirect('homepage')
             else:
                 messages.error(request, 'Invalid username or password.')
+                return redirect('login_user')
         else:
             messages.error(request, 'Invalid username or password.')
+            return redirect('login_user')
     # If method == GET
     return render(request, 'squares/login.html', {
         'form': LoginForm()
@@ -172,4 +174,5 @@ def quick_settings(request):
         
         messages.success(request, 'New numbers have been created.')
         return redirect('homepage')
+        
     return render(request, 'squares/quick_settings.html')
