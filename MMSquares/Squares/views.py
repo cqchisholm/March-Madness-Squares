@@ -4,6 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
+from django.urls import reverse
 from .forms import LoginForm, UploadCSVForm, WinnerForm
 from .models import RoundAmounts, WinningNumbers, LosingNumbers, Players
 from .helpers import random_numbers
@@ -13,46 +14,6 @@ from django.contrib import messages
 
 
 def homepage(request):
-    if request.method == 'POST' and 'new_numbers' in request.POST:
-        # Get new winning team numbers
-        winning_numbers = random_numbers()
-        # Get losing team numbers
-        losing_numbers = random_numbers()
-
-        # Update WinningNumbers model
-        WinningNumbers.objects.filter(id=1).update(
-            spot1=winning_numbers[0],
-            spot2=winning_numbers[1],
-            spot3=winning_numbers[2],
-            spot4=winning_numbers[3],
-            spot5=winning_numbers[4],
-            spot6=winning_numbers[5],
-            spot7=winning_numbers[6],
-            spot8=winning_numbers[7],
-            spot9=winning_numbers[8],
-            spot10=winning_numbers[9],
-        )
-        # Save WinningNumbers model
-        for item in WinningNumbers.objects.filter(id=1):
-            item.save()
-
-        # Update LosingNumbers model
-        LosingNumbers.objects.filter(id=1).update(
-            spot1=losing_numbers[0],
-            spot2=losing_numbers[1],
-            spot3=losing_numbers[2],
-            spot4=losing_numbers[3],
-            spot5=losing_numbers[4],
-            spot6=losing_numbers[5],
-            spot7=losing_numbers[6],
-            spot8=losing_numbers[7],
-            spot9=losing_numbers[8],
-            spot10=losing_numbers[9],
-        )
-        # Save LosingNumbers model
-        for item in LosingNumbers.objects.filter(id=1):
-            item.save()
-
 
     # Winning team's numbers
     win_nums = WinningNumbers.objects.values()[0]
@@ -120,7 +81,7 @@ def homepage(request):
         })
     except:
         return render(request, 'squares/homepage.html', {
-            'message': 'Something went wrong. Cannot find CSV file.'
+            'error_message': 'Something went wrong. Cannot find CSV file.'
         })
 
 
@@ -169,4 +130,46 @@ def directions(request):
 
 
 def quick_settings(request):
+    if request.method == 'POST' and 'new_numbers' in request.POST:
+        # Get new winning team numbers
+        winning_numbers = random_numbers()
+        # Get losing team numbers
+        losing_numbers = random_numbers()
+
+        # Update WinningNumbers model
+        WinningNumbers.objects.filter(id=1).update(
+            spot1=winning_numbers[0],
+            spot2=winning_numbers[1],
+            spot3=winning_numbers[2],
+            spot4=winning_numbers[3],
+            spot5=winning_numbers[4],
+            spot6=winning_numbers[5],
+            spot7=winning_numbers[6],
+            spot8=winning_numbers[7],
+            spot9=winning_numbers[8],
+            spot10=winning_numbers[9],
+        )
+        # Save WinningNumbers model
+        for item in WinningNumbers.objects.filter(id=1):
+            item.save()
+
+        # Update LosingNumbers model
+        LosingNumbers.objects.filter(id=1).update(
+            spot1=losing_numbers[0],
+            spot2=losing_numbers[1],
+            spot3=losing_numbers[2],
+            spot4=losing_numbers[3],
+            spot5=losing_numbers[4],
+            spot6=losing_numbers[5],
+            spot7=losing_numbers[6],
+            spot8=losing_numbers[7],
+            spot9=losing_numbers[8],
+            spot10=losing_numbers[9],
+        )
+        # Save LosingNumbers model
+        for item in LosingNumbers.objects.filter(id=1):
+            item.save()
+        
+        messages.success(request, 'New numbers have been created.')
+        return redirect(reverse('homepage'))
     return render(request, 'squares/quick_settings.html')
