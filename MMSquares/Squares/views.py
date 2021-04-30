@@ -171,5 +171,5 @@ def quick_settings(request):
             item.save()
         
         messages.success(request, 'New numbers have been created.')
-        return redirect(reverse('homepage'))
+        return redirect('homepage')
     return render(request, 'squares/quick_settings.html')
