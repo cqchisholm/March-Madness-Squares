@@ -1,4 +1,5 @@
 from random import random
+from django.forms.utils import flatatt
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -10,10 +11,32 @@ from .models import RoundAmounts, WinningNumbers, LosingNumbers, Players
 from .helpers import random_numbers
 import pandas as pd
 from django.contrib import messages
+from django.db.models import F
 
 
 
 def homepage(request):
+    # If submitting a winner to a game
+    if request.method == 'POST':
+        form = WinnerForm(request.POST)
+        if form.is_valid():
+            round_number = form.cleaned_data['round_number']
+            winner = form.cleaned_data['winner']
+            # Get the queryset of the player selected
+            player = Players.objects.filter(player=winner)
+            # Use if statements to match round_number and add 1 game won to the players round total
+            if round_number == 'first_round':
+                player.update(first_round=F('first_round') + 1)
+            elif round_number == 'second_round':
+                player.update(second_round=F('second_round') + 1)
+            elif round_number == 'sweet_sixteen':
+                player.update(sweet_sixteen=F('sweet_sixteen') + 1)
+            elif round_number == 'elite_eight':
+                player.update(elite_eight=F('elite_eight') + 1)
+            elif round_number == 'final_four':
+                player.update(final_four=F('final_four') + 1)
+            elif round_number == 'championship':
+                player.update(championship=F('championship') + 1)
 
     # Winning team's numbers
     win_nums = WinningNumbers.objects.values()[0]

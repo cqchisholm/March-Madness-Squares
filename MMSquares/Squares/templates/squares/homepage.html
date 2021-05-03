@@ -59,7 +59,7 @@
             <div class="col-sm pad-right">
                 {% if request.user.is_authenticated %}
                     <div class="container">
-                        <form action="POST">
+                        <form method="POST">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-3">
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="col">
                                     <br>
-                                    <button class="btn btn-success">Submit</button>
+                                    <input type="submit" value="Submit" class="btn btn-success">
                                 </div>
                             </div>
                         </form>    

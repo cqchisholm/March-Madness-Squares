@@ -22,12 +22,12 @@ class UploadCSVForm(forms.ModelForm):
 
 class WinnerForm(forms.Form):
     ROUND_CHOICES = [
-        ('R1', 'First Round'),
-        ('R2', 'Second Round'),
-        ('R3', 'Sweet 16'),
-        ('R4','Elite Eight'),
-        ('R5', 'Final Four'),
-        ('R6', 'Championship'),
+        ('first_round', 'First Round'),
+        ('second_round', 'Second Round'),
+        ('sweet_sixteen', 'Sweet 16'),
+        ('elite_eight','Elite Eight'),
+        ('final_four', 'Final Four'),
+        ('championship', 'Championship'),
     ]
     # Get list of players
     players = Players.objects.values_list('player', flat=True)
