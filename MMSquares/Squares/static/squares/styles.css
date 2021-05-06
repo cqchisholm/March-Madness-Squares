@@ -1,3 +1,23 @@
+.homepage  {
+    background: url('/static/squares/images/MARCH MADNESS - 60 PERCENT.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.directions {
+    background: url('/static/squares/images/basketball.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.table {
+    background-color: white;
+}
+
 .pool-table th, .pool-table td, .scores-table th, .scores-table td {
     text-align: center;
     vertical-align: middle;
@@ -47,8 +67,9 @@ span {
     padding-right: 3%;
 }
 
-.directions {
+.how-to-play {
     padding-top: 20px;
+    color: rgb(196, 194, 194);
 }
 
 /* overriding the CSS so that a downward arrow appears in the drop downs
