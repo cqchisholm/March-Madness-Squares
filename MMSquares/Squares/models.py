@@ -1,9 +1,11 @@
 from django.db import models
 import os
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 # Function to change the name of the uploaded CSV file
 def name_change(instance, filename):
-    path = 'csv_files/'
+    path = 'csv_file/'
     return os.path.join(path, 'squares.csv')
 
 

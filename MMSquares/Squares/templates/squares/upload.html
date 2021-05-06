@@ -2,16 +2,25 @@
 
 {% block title %} Upload CVS {% endblock %}
 
+{% block body_class %} upload {% endblock %}
+
 {% block body %}
 
     {% load crispy_forms_tags %}
 
-    <h2>Upload the March Madness Squares Pool Excel sheet here.</h2>
+    <div class="container">
+        <h2 style="text-align: center;">Upload the March Madness Squares Pool Excel sheet here.</h2>
 
-    <form method='POST' enctype='multipart/form-data'>
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Submit">
-    </form>
+        Make sure everyone square is filled out on the Google Sheets 
+        speadsheet at this <a href="https://docs.google.com/spreadsheets/d/1RalxR6R1K2gvQElQAUdvIuiRVYUqXciLOGwR-Cy3qMQ/edit?usp=sharing" target="_blank">link</a>.
+
+        Download the file to your computer and upload via the buttons below.
+
+        <form method='POST' enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
 {% endblock %}

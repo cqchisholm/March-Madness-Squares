@@ -1,5 +1,6 @@
 from os import X_OK
 from random import choices
+from crispy_forms.layout import Submit
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -30,12 +31,11 @@ class WinnerForm(forms.Form):
         ('championship', 'Championship'),
     ]
     # Get list of players
-    players = Players.objects.values_list('player', flat=True)
-    WINNER_CHOICES = [(player, player) for player in players]
+    winner = forms.ModelChoiceField(required=True, widget=forms.Select, queryset=Players.objects.values_list('player', flat=True))
     # Get all six rounds into a choice field
     round_number = forms.ChoiceField(choices=ROUND_CHOICES)
     # Get all players and put into a choice field
-    winner = forms.ChoiceField(choices=WINNER_CHOICES)
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

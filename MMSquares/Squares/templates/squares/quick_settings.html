@@ -13,13 +13,11 @@
                     <input class="btn btn-primary" type="submit" value="New Numbers" name="new_numbers">
                 </p>
             </form>
-            <div class="container">
-                <form method-"POST">
-                    {% csrf_token %}
-                    Reset entire game.
-                    <input class="btn btn-primary" type="submit" value="Reset Games" name="reset_game">    
-                </form>
-            </div>
+            <form method-"POST">
+                {% csrf_token %}
+                Reset entire game.
+                <input class="btn btn-primary" type="submit" value="Reset Games" name="reset_game">    
+            </form>
         
         {% else %}
             You need admin permissions to access these settings.

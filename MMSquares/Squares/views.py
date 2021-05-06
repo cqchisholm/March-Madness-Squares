@@ -12,6 +12,7 @@ from .helpers import random_numbers
 import pandas as pd
 from django.contrib import messages
 from django.db.models import F
+import os
 
 
 
@@ -56,7 +57,7 @@ def homepage(request):
     # Do the following on both GET and POST method
     try:
         # Read in the CSV without headers
-        pool = pd.read_csv(r'C:\Users\chizj\OneDrive\Coding\March Madness Squares\MMSquares\csv_files\squares.csv', header=None)
+        pool = pd.read_csv(r'C:\Users\chizj\OneDrive\Coding\March Madness Squares\MMSquares\csv_file\squares.csv', header=None)
         # Turn into a dictionary - orient='records' is so the key/values are row/columns so it outputs correctly by row in html
         pool = pool.to_dict(orient='records')
 
@@ -141,6 +142,13 @@ def upload(request):
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
+            # Delete file if one already exists
+            if os.path.exists('csv_file/squares.csv'):
+                os.remove('csv_file/squares.csv')
+            # Delete player database and start over with new CSV file
+            players = Players.objects.all()
+            for player in players:
+                player.delete()
             # Save CSV file
             form.save()
             return HttpResponseRedirect('/')
