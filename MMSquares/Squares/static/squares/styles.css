@@ -82,3 +82,7 @@ span {
     -webkit-appearance: menulist !important;
     appearance: auto !important;
 }
+
+.submit-file {
+    margin-top: 7px;
+}
