@@ -18,6 +18,10 @@
     background-color: white;
 }
 
+.nav-tabs {
+    background-color: white;
+}
+
 .pool-table th, .pool-table td, .scores-table th, .scores-table td {
     text-align: center;
     vertical-align: middle;
