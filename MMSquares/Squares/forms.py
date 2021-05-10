@@ -21,6 +21,7 @@ class UploadCSVForm(forms.ModelForm):
         fields = ['file']
 
 
+# This is to change the labels of the 'winner' drop down in the WinnerForm
 class NameChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
         return f'{obj.player}'
@@ -35,12 +36,10 @@ class WinnerForm(forms.Form):
         ('final_four', 'Final Four'),
         ('championship', 'Championship'),
     ]
-    # Get list of players
+    # Get all players and put into a choice field
     winner = NameChoiceField(queryset=Players.objects.all())
     # Get all six rounds into a choice field
     round_number = forms.ChoiceField(choices=ROUND_CHOICES)
-    # Get all players and put into a choice field
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
