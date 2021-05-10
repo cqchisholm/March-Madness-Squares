@@ -1,6 +1,7 @@
 from os import X_OK
 from random import choices
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Layout, Submit
+from crispy_forms.bootstrap import FieldWithButtons, StrictButton
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -19,15 +20,18 @@ class UploadCSVForm(forms.ModelForm):
     class Meta:
         model = SquaresCSV
         fields = ['file']
-
-
-# This is to change the labels of the 'winner' drop down in the WinnerForm
-class NameChoiceField(ModelChoiceField):
-    def label_from_instance(self, obj):
-        return f'{obj.player}'
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['file'].label = ''
 
 
 class WinnerForm(forms.Form):
+    # This is to change the labels of the 'winner' drop down in the WinnerForm
+    class NameChoiceField(ModelChoiceField):
+        def label_from_instance(self, obj):
+            return f'{obj.player}'
+
     ROUND_CHOICES = [
         ('first_round', 'First Round'),
         ('second_round', 'Second Round'),

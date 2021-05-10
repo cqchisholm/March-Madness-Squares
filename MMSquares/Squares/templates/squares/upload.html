@@ -8,19 +8,27 @@
 
     {% load crispy_forms_tags %}
 
-    <div class="container">
-        <h2 style="text-align: center;">Upload the March Madness Squares Pool Excel sheet here.</h2>
-
-        Make sure everyone square is filled out on the Google Sheets 
-        speadsheet at this <a href="https://docs.google.com/spreadsheets/d/1RalxR6R1K2gvQElQAUdvIuiRVYUqXciLOGwR-Cy3qMQ/edit?usp=sharing" target="_blank">link</a>.
-
-        Download the file to your computer and upload via the buttons below.
-
-        <form method='POST' enctype='multipart/form-data'>
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" value="Submit" class="btn btn-primary submit-file">
-        </form>
+    <div class="container upload-file">
+        <h4>Upload New Squares</h4>
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-4">
+                <div>
+                    <form method='POST' enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="submit" value="Submit" class="btn btn-primary submit-file">
+                    </form> 
+                </div>   
+            </div>
+            <div class="col">
+                <ol>
+                    <li>Make sure every square is filled out on the Google Sheets
+                    speadsheet at this <a href="https://docs.google.com/spreadsheets/d/1RalxR6R1K2gvQElQAUdvIuiRVYUqXciLOGwR-Cy3qMQ/edit?usp=sharing" target="_blank">link</a>.</li>
+                    <li>Download the file to your computer.</li>
+                    <li>Upload via the buttons to the right.</li>
+                </ol>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

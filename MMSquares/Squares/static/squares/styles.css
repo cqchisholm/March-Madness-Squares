@@ -76,6 +76,10 @@ span {
     color: rgb(196, 194, 194);
 }
 
+.upload-file {
+    padding-top: 20px;
+}
+
 /* overriding the CSS so that a downward arrow appears in the drop downs
    'Select Round' and 'Select Winner' */
 .form-control {
