@@ -4,8 +4,8 @@ from crispy_forms.layout import Submit
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms.models import ModelChoiceField
 from django.forms.widgets import PasswordInput
-from django import forms
 from .models import SquaresCSV, Players
 from crispy_forms.helper import FormHelper
 
@@ -21,6 +21,11 @@ class UploadCSVForm(forms.ModelForm):
         fields = ['file']
 
 
+class NameChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return f'{obj.player}'
+
+
 class WinnerForm(forms.Form):
     ROUND_CHOICES = [
         ('first_round', 'First Round'),
@@ -31,7 +36,7 @@ class WinnerForm(forms.Form):
         ('championship', 'Championship'),
     ]
     # Get list of players
-    winner = forms.ModelChoiceField(required=True, widget=forms.Select, queryset=Players.objects.values_list('player', flat=True))
+    winner = NameChoiceField(queryset=Players.objects.all())
     # Get all six rounds into a choice field
     round_number = forms.ChoiceField(choices=ROUND_CHOICES)
     # Get all players and put into a choice field
