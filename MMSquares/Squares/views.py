@@ -24,7 +24,7 @@ def homepage(request):
             round_number = form.cleaned_data['round_number']
             winner = form.cleaned_data['winner']
             # Get the queryset of the player selected
-            player = Players.objects.filter(player=winner)
+            player = Players.objects.filter(id=winner.id)
             # Use if statements to match round_number and add 1 game won to the players round total
             if round_number == 'first_round':
                 player.update(first_round=F('first_round') + 1)
@@ -38,7 +38,7 @@ def homepage(request):
                 player.update(final_four=F('final_four') + 1)
             elif round_number == 'championship':
                 player.update(championship=F('championship') + 1)
-
+                
     # Winning team's numbers
     win_nums = WinningNumbers.objects.values()[0]
     # Turn dictionary into a list to better output into the HTML table
