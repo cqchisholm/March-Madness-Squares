@@ -43,7 +43,19 @@
             </div>
           </div>
         </div>
-      </nav>  
+      </nav>
+
+      {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                <div class="alert alert-success alert-dismissible fade show w-25 mx-auto" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        {% endfor %}
+      {% endif %}
+
 
     {% block body %}
     {% endblock %}

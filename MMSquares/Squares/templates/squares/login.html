@@ -6,16 +6,6 @@
 
     {% load crispy_forms_tags %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show w-25 mx-auto" role="alert">
-                <strong>{{ message }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
-    {% endif %}
-
-
     <div class="col-md-6 offset-md-3">
         <h4 class="padding">Login for admin access.</h4>
 

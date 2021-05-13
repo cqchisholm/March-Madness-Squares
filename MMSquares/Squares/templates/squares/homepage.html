@@ -8,17 +8,6 @@
 
     {% load crispy_forms_tags %}
 
-    {% if error_message %}
-        {{ error_message }}
-    {% endif %}
-
-    {% if messages %}
-        <div class="alert alert-success alert-dismissible fade show w-25 mx-auto" role="alert">
-            <strong>{{ messages }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endif %}
-
         <div class="row">
             <div class="col-sm pad-left">
                 <table class="table table-borderless pool-table">
